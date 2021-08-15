@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 
-app.use(cors());
+
 // This will look for .env file in root folder and add it to process environment
 if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 
@@ -14,6 +14,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(express.json());
+app.use(cors());
 
 // if (process.env.NODE_ENV === 'production') {
 //     app.use(express.static(path.join(__dirname, 'client/build')));
