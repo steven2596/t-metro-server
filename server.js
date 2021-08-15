@@ -13,18 +13,22 @@ const port = process.env.PORT || 5000;
 
 app.use(express.json());
 
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, 'client/build')));
+// if (process.env.NODE_ENV === 'production') {
+//     app.use(express.static(path.join(__dirname, 'client/build')));
 
-    app.get('*', function (req, res) {
-        res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
-    })
-}
+//     app.get('*', function (req, res) {
+//         res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
+//     })
+// }
 
 app.listen(port, error => {
     if (error) throw error;
     console.log('Server running on port' + port);
 });
+
+app.get('/', (req, res) => {
+    res.send('server running now');
+})
 
 
 //This will handle post request from front-end.
